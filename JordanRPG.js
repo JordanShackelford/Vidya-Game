@@ -1,6 +1,6 @@
+/* need to fix animations and stop repeating code so much */
+
 window.onload = function() {
-    
-    // jordan is great
     //will use to rotate screen based on tilt of mobile device
     if (window.DeviceMotionEvent) {
         window.addEventListener("devicemotion", function() {
@@ -14,8 +14,6 @@ window.onload = function() {
     var context = a_canvas.getContext("2d");
     var showOptionsMenu = false;
 
-    var fireball = new Image();
-    fireball.src = "res/fireball.png";
     var cursor = new Image();
     cursor.src = "res/swordicon.png";
     var boat = new Image();
@@ -35,7 +33,7 @@ window.onload = function() {
     var screen = {
         offsetX: 0,
         offsetY: 0,
-        //TODO: use less rows and columns for mobile
+        //TODO: base numrows and columns on screensize
         numRows: 15,
         numColumns: 15,
         mouseCanvasCoords: [0, 0],
@@ -73,7 +71,7 @@ window.onload = function() {
     player.pixelX = player.screenTileX * screen.tileWidth;
     player.pixelY = player.screenTileY * screen.tileHeight - screen.tileHeight;
     player.animateMovement = function(direction) {
-        //change animation time to be based on distance to move, player's movement speed
+        //todo:change animation time to be based on distance to move, player's movement speed
         var animationTime = 1000;
         var numFrames = config.fps;
         screen.offsetX = 0;
@@ -133,6 +131,7 @@ window.onload = function() {
             context.stroke();
         },
         drawPlayer: function() {
+            //animation is completely broken
             var animationClips = [[8,7],[55,2],[102,2],[153,2],[8,150],[51,150],[104,150],[155,150],[8,76],[51,76],[104,76],[155,76],[8,220],[51,220],[104,220],[155,220]];
             var xClip = animationClips[player.animationFrame][0];
             var yClip = animationClips[player.animationFrame][1];
@@ -414,6 +413,7 @@ window.onload = function() {
             }
 
             function makeLikeSurroundingTiles() {
+                //probably too much code repetition here
                 for (var i = 0; i < chunkHeight; i++) {
                     for (var j = 0; j < chunkWidth; j++) {
                         var grassSurrounding = 0;
@@ -563,8 +563,8 @@ window.onload = function() {
             numTiles = tilesList.length;
         },
     };
+
     var waterAnimationFrame = 0;
-    
     setInterval(function() {
         if (waterAnimationFrame === 0) {
             tiles.water.image.src = "res/water1.png";
@@ -577,9 +577,9 @@ window.onload = function() {
 
     //pre-gameloop setup
     generator.generateChunk();
-    //generate trail
     
     var processPlayerMovement = setInterval(function(){
+        //need to refactor to allow diagonal movement
         if(player.movementQueue.length > 0){
             var direction = player.movementQueue.shift();
             switch(direction){
