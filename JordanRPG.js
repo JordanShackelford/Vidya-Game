@@ -803,10 +803,14 @@ window.onload = function() {
             //TODO: rotate from center instead of top left edge
             case 39: //right arrow, rotate camera clockwise
                 //move to center to rotate around that point
+                context.translate(a_canvas.width / 2, a_canvas.height / 2);
                 context.rotate(1 * Math.PI / 180);
+                context.translate(-1 * a_canvas.width / 2, -1 * a_canvas.height / 2);
                 break;
             case 37: //left arrow
+                context.translate(a_canvas.width / 2, a_canvas.height / 2);
                 context.rotate(-1 * Math.PI / 180);
+                context.translate(-1 *a_canvas.width / 2, -1 * a_canvas.height / 2);
                 break;
 
             case 27:
