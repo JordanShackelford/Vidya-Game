@@ -9,7 +9,7 @@
 - [x] Randomly generated map
 - [ ] Proper animation
 - [ ] Proper camera zoom
-- [ ] Proper camera rotation
+- [x] Proper camera rotation
 - [ ] node.js/socket.io multiplayer server
 - [ ] Resource Gathering
 - [ ] Building
