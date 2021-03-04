@@ -62,7 +62,7 @@ window.onload = function() {
         img: document.getElementById("player"),
         imgWidth: screen.tileWidth,
         imgHeight: screen.tileHeight * 2,
-        moveSpeed: 5,
+        moveSpeed: 7,
         isMoving: false,
         animationFrame: 0,
         movementQueue:[]
@@ -364,7 +364,7 @@ window.onload = function() {
         dirt: new Tile(1, 1, "res/dirt.jpg")
     };
     var config = {
-        fps: 60
+        fps: 120
     };
     /*
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
